@@ -1,0 +1,14 @@
+# Look for Vim...
+EDITOR="$(command -v vim)"
+if [ -z "$EDITOR" ]; then
+	# ...but use vi if Vim doesn't exist.
+	EDITOR=vi
+fi
+VISUAL=$EDITOR
+export EDITOR VISUAL
+
+# Add ~/.bin to path
+export PATH=$PATH:~/.bin
+
+# Python startup for autocomplete enabling
+export PYTHONSTARTUP=~/.pythonrc

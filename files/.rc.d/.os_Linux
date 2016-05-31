@@ -1,0 +1,22 @@
+case "$-" in
+    *i*)
+		# Linux uses GNU less, which includes color support
+		alias ls='ls --color=auto'
+		[[ -x "$(command -v dircolors)" ]] && eval $(dircolors)
+
+		# Enable color by default for grep and variants
+		alias grep='grep --colour=auto'
+		alias egrep='egrep --colour=auto'
+		alias fgrep='fgrep --colour=auto'
+		alias zgrep='zgrep --colour=auto'
+		alias zegrep='zegrep --colour=auto'
+		alias zfgrep='zfgrep --colour=auto'
+
+		# Linux uses GNU grep.  Set options such that color support is
+		# enabled, binary files will be ignored, and files named "tags"
+		# will not be searched.
+		export GREP_OPTIONS="--colour=auto --binary-files=without-match --exclude=tags"
+
+		[[ -x "$(command -v dircolors)" ]] && eval $(dircolors)
+		;;
+esac

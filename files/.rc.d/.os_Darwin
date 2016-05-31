@@ -1,0 +1,27 @@
+case "$-" in
+    *i*)
+		# Darwin includes some GNU things and some less-than-GNU things,
+		# but color options exist on the default 'ls' and 'grep'
+		# commands so enable them.
+		alias ls='ls -G'
+		export CLICOLOR=""
+		export LSCOLORS=gxfxcxdxbxegEdabagacad
+
+		# Enable color by default for grep and variants
+		alias grep='grep --colour=auto'
+		alias egrep='egrep --colour=auto'
+		alias fgrep='fgrep --colour=auto'
+		alias zgrep='zgrep --colour=auto'
+		alias zegrep='zegrep --colour=auto'
+		alias zfgrep='zfgrep --colour=auto'
+
+		# Darwin uses BSD grep, but it seems to respect options set via
+		# GREP_OPTIONS just like GNU grep, even though it is not
+		# mentioned in the man page.  Set options such that color
+		# support is enabled, binary files will be ignored, and files
+		# named "tags" will not be searched.
+		export GREP_OPTIONS="--colour=auto --binary-files=without-match --exclude=tags"
+		# Work around a VIM incompatibility with crontab on OSX.
+		alias crontab='VIM_CRONTAB=true crontab'
+		;;
+esac

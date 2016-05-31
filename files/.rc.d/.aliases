@@ -1,0 +1,7 @@
+# Aliased commands
+alias la="ls -al"
+alias ll="ls -l"
+
+alias ..="cd .."
+alias c="clear"
+alias s="source ~/.bash_profile"
