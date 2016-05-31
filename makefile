@@ -1,6 +1,6 @@
 .PHONY: submodules backup clean install
 
-all: update submodules backup install
+all: update submodules backup install submodules-make
 
 update:
 	@# Update the current repo getting any changes
