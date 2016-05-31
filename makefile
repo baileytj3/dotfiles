@@ -12,6 +12,10 @@ submodules:
 	@echo "==> Updating submodules"
 	@git submodule update --init --recursive
 
+submodules-make:
+	@# Make any submodules within this repo
+	@echo "==> Making submodules"
+	@git submodule foreach 'make'
 backup:
 	@# If a file will be symlinked in the dotfiles: target
 	@#and it currently exists in the $HOME directory,
@@ -59,6 +63,8 @@ clean:
 		f=$$(basename $$file);					\
 		cp -Rn $(CURDIR)/backup/$$f $(HOME)/$$f; \
 	done;
+	@echo "==> Cleaning submodules"
+	@git submodule foreach 'make clean'
 			
 install:
 	@echo "==> Creating RC Directory"
