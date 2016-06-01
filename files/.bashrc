@@ -81,6 +81,8 @@ fi
 
 # Source files in .d directory
 # . files do not get reincluded
-ls -1 ${RC_PATH}/* 2>/dev/null | { while read line; do . $line; done; }
+for f in $(find $RC_PATH/* 2>/dev/null); do
+    . $f;
+done
 
 unset RC_PATH
