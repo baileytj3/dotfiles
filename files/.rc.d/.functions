@@ -26,6 +26,12 @@ function ptop {
 # Set the prompt
 function set_prompt {
 
+    # Dont try to set the prompt if there's no interactive shell
+    case $- in
+        *i*) ;;
+        *) return;;
+    esac
+
     black="\[$(tput setaf 0)\]"
     blue="\[$(tput setaf 4)\]"
     green="\[$(tput setaf 2)\]"
