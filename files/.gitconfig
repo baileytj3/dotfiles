@@ -13,10 +13,11 @@
 	diff = auto
 	interactive = auto
 	status = auto
-	ui = true
+	ui = auto
 [core]
 	excludefile = ~/.gitignore_global
+	whitespace = trailing-space,space-before-tab
 [push]
-	default = matching
+	default = tracking
 [url "git@github.com:"]
 	insteadOf = github:
