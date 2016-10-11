@@ -5,3 +5,6 @@ pp = PrettyPrinter(indent=2).pprint
 
 def pv(obj):
  pp(vars(obj))
+
+def pd(obj):
+ pp(dir(obj))
