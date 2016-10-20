@@ -1,23 +1,23 @@
 [alias]
-	st = status
-	ci = commit
-	co = checkout
-	br = branch
-	ls = log --oneline --graph
-	pr = pull --rebase
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+    ls = log --oneline --graph
+    pr = pull --rebase
 [user]
-	name = Tyler Bailey
-	email = baileytj3@gmail.com
+    name = Tyler Bailey
+    email = baileytj3@gmail.com
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
-	ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+    ui = auto
 [core]
-	excludefile = ~/.gitignore_global
-	whitespace = trailing-space,space-before-tab
+    excludefile = ~/.gitignore_global
+    whitespace = trailing-space,space-before-tab
 [push]
-	default = tracking
+    default = tracking
 [url "git@github.com:"]
-	insteadOf = github:
+    insteadOf = github:
