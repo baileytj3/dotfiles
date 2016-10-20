@@ -1,4 +1,7 @@
 [alias]
+    sp = stash pop
+    sl = stash list
+    ss = stash
     st = status
     ci = commit
     co = checkout
