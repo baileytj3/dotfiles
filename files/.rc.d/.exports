@@ -7,8 +7,8 @@ fi
 VISUAL=$EDITOR
 export EDITOR VISUAL
 
-# Add ~/.bin to path
-export PATH=$PATH:~/.bin
+# Add ~/.bin and /usr/local/sbin to path
+export PATH=$PATH:/usr/local/sbin:~/.bin
 
 # Python startup for autocomplete enabling
 export PYTHONSTARTUP=~/.pythonrc
