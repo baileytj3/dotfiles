@@ -1,4 +1,5 @@
 [alias]
+    sh = show --pretty="" --name-only
     sp = stash pop
     sl = stash list
     ss = stash
@@ -6,8 +7,10 @@
     ci = commit
     co = checkout
     br = branch
-    ls = log --oneline --graph
+    ls = log --oneline --graph --all --decorate
     pr = pull --rebase
+    showtracked = ls-tree --name-only -r
+    whatadded = log --diff-filter=A --
 [user]
     name = Tyler Bailey
     email = baileytj3@gmail.com
