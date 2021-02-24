@@ -76,17 +76,17 @@ function set_prompt {
 
     # Host name color
     if [ -z "$HOSTCOLOR" ]; then
-        HOSTCOLOR="${green}"
+        HOSTCOLOR=${green}
     fi
 
     # Branch Color
-    BRANCHCOLOR="${blue}"
+    BRANCHCOLOR=${blue}
 
     # User color
     if [ $(id -ru) == '0' ]; then
-        USERCOLOR="${red}"
+        USERCOLOR=${red}
     else
-        USERCOLOR="${HOSTCOLOR}"
+        USERCOLOR=${HOSTCOLOR}
     fi
 
     # Set color prompt
