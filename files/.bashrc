@@ -1,10 +1,7 @@
 #.bashrc
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
 
 # Don't put duplicate lines in the history. See bash(1) for more options.
 # ignoredups - ignore duplicate commands in history
