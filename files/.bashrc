@@ -11,12 +11,15 @@ esac
 # ignorespace - ignore commands that start with a space
 # ignoreboth - shorthand for ignorespace and ignoredups
 # erasedups - duplicate lines in history are erased, most recent saved
-HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL=ignoreboth:erasedups
 
 # Set the number of commands to be kept in history
-HISTSIZE=100000
-HISTFILESIZE=200000
-HISTFILE=$HOME/.history
+export HISTSIZE=100000
+export HISTFILESIZE=200000
+export HISTFILE=$HOME/.history
+
+# Add a timestamp to the bash history
+export HISTTIMEFORMAT='%Y-%m-%dT%H:%M:%S%z '
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
