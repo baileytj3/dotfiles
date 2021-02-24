@@ -58,10 +58,7 @@ if [ -x "$(command -v git)" ]; then
 			printf " [$result]"
 		fi
 	}
-else
-	function parse_git_status {
-		return
-	}
+    PROMPTGIT=1
 fi
 
 # Run top showing process with given name
@@ -93,14 +90,14 @@ function set_prompt {
     fi
 
     # Set color prompt
-    PS1="${black}["
-    PS1+="${USERCOLOR}\u"
-    PS1+="${black}@"
-    PS1+="${HOSTCOLOR}\h"
-    PS1+="${BRANCHCOLOR}\$(parse_git_status)"
-    PS1+="${blue} \w"
-    PS1+="${black}]\n$ "
-    PS1+="${reset}"
+    PS1="\[${black}\]["
+    PS1+="\[${USERCOLOR}\]\u"
+    PS1+="\[${black}\]@"
+    PS1+="\[${HOSTCOLOR}\]\h"
+    [[ -n PROMPTGIT ]] && PS1+="\[${BRANCHCOLOR}\]\$(parse_git_status)"
+    PS1+="\[${blue}\] \w"
+    PS1+="\[${black}\]]\n$ "
+    PS1+="\[${reset}\]"
 
     export PS1
 }
