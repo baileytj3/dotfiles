@@ -40,6 +40,23 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# Command timer
+# https://github.com/chbrown/config/blob/c96062946081a5eb38a257087b5120c0fe106acf/dotfiles/.bashrc.d/timer
+trap 'STARTED=${STARTED-$SECONDS}' DEBUG
+
+timer_stop() {
+    export LAST=$(($SECONDS - $STARTED))
+    unset STARTED
+}
+
+TIMER="timer_stop"
+if [[ -z "$PROMPT_COMMAND" ]]; then
+    PROMPT_COMMAND="$TIMER"
+elif [[ ! $PROMPT_COMMAND =~ $TIMER ]]; then
+    PROMPT_COMMAND="$PROMPT_COMMAND; $TIMER"
+fi
+unset TIMER
+
 #
 # Functions
 #
@@ -64,6 +81,16 @@ fi
 # Run top showing process with given name
 function ptop {
     top -p `pgrep $1 | head -20 | tr "\\n" "," | sed 's/,$//'`;
+}
+
+# Return the last command time if above a threshold
+function get_last {
+    if [ "${LAST-0}" -ge "60" ]; then
+        LASTFMT="+%M:%S"
+        [[ "$LAST" -ge "3600" ]] && LASTFMT="+%H:%M:%S"
+
+        printf "[$(date --utc --date @${LAST-0} "$LASTFMT")]"
+    fi
 }
 
 function set_prompt {
@@ -96,8 +123,10 @@ function set_prompt {
     PS1+="\[${HOSTCOLOR}\]\h"
     [[ -n PROMPTGIT ]] && PS1+="\[${BRANCHCOLOR}\]\$(parse_git_status)"
     PS1+="\[${blue}\] \w"
-    PS1+="\[${black}\]]\n$ "
+    PS1+="\[${black}\]]"
+    PS1+="\$(get_last)"
     PS1+="\[${reset}\]"
+    PS1+="\n\$ "
 
     export PS1
 }
