@@ -83,7 +83,7 @@ function set_prompt {
     fi
 
     # Branch Color
-    BRANCHCOLOR=${blue}
+    BRANCHCOLOR=${red}
 
     # User color
     if [ $(id -ru) == '0' ]; then
