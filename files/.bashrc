@@ -121,10 +121,10 @@ function set_prompt {
     PS1+="\[${USERCOLOR}\]\u"
     PS1+="\[${black}\]@"
     PS1+="\[${HOSTCOLOR}\]\h"
-    [[ -n PROMPTGIT ]] && PS1+="\[${BRANCHCOLOR}\]\$(parse_git_status)"
+    [[ -n PROMPTGIT ]] && PS1+="\[${BRANCHCOLOR}\]\$(parse_git_status 2>/dev/null)"
     PS1+="\[${blue}\] \w"
     PS1+="\[${black}\]]"
-    PS1+="\$(get_last)"
+    PS1+="\$(get_last 2>/dev/null)"
     PS1+="\[${reset}\]"
     PS1+="\n\$ "
 
